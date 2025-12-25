@@ -67,44 +67,40 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 
 export function toPxSensor(t: TivePayload) {
   return {
-    
     deviceimei: t.DeviceId,
     timestamp: new Date(t.EntryTimeEpoch),
     provider: "Tive",
     payload: {
-      deviceid: t.DeviceName,
-      deviceimei: t.DeviceId,
+      device_id: t.DeviceName,
+      device_imei: t.DeviceId,
       timestamp: new Date(t.EntryTimeEpoch),
       provider: "Tive",
       type: "Active",
       temperature: r2(t.Temperature.Celsius),
       humidity: t.Humidity?.Percentage != null ? r1(t.Humidity.Percentage) : null,
-      lightlevel: t.Light?.Lux != null ? r1(t.Light.Lux) : null,
+      light_level: t.Light?.Lux != null ? r1(t.Light.Lux) : null,
     }
-    
   };
 }
 
 export function toPxLocation(t: TivePayload) {
   return {
-    
     deviceimei: t.DeviceId,
     timestamp: new Date(t.EntryTimeEpoch),
     provider: "Tive",
     payload: {
-      deviceid: t.DeviceName,
-      deviceimei: t.DeviceId,
+      device_id: t.DeviceName,
+      device_imei: t.DeviceId,
       timestamp: new Date(t.EntryTimeEpoch),
       provider: "Tive",
       type: "Active",
       latitude: t.Location.Latitude,
       longitude: t.Location.Longitude,
-      locationaccuracy: t.Location.Accuracy?.Meters ?? null,
-      locationsource: t.Location.LocationMethod ?? null,
-      batterylevel: t.Battery?.Percentage ?? null,
-      cellulardbm: t.Cellular?.Dbm ?? null,
-      wifiaccesspoints: t.Location.WifiAccessPointUsedCount ?? null,
+      location_accuracy: t.Location.Accuracy?.Meters ?? null,
+      location_source: t.Location.LocationMethod ?? null,
+      battery_level: t.Battery?.Percentage ?? null,
+      cellular_dbm: t.Cellular?.Dbm ?? null,
+      wifi_access_points: t.Location.WifiAccessPointUsedCount ?? null,
     }
-    
   };
 }
